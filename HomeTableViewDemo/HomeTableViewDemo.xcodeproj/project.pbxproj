@@ -17,6 +17,10 @@
 		89C9F7571CA9232200703617 /* HomeTableViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7561CA9232200703617 /* HomeTableViewDemoUITests.m */; };
 		89C9F7671CA926C300703617 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7651CA926C300703617 /* HomeTableViewCell.m */; };
 		89C9F76E1CA93AC400703617 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F76D1CA93AC400703617 /* UIView+Frame.m */; };
+		8B2A7F541CA9765100C0DE25 /* LeftTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A7F531CA9765100C0DE25 /* LeftTableView.m */; };
+		8B2A7F5A1CA9766E00C0DE25 /* RightCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A7F591CA9766E00C0DE25 /* RightCollectionView.m */; };
+		8BA281331CA95A71000176DB /* mj.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA281321CA95A71000176DB /* mj.png */; };
+		8BA281351CA95A8F000176DB /* coolDog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8BA281341CA95A8F000176DB /* coolDog.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,12 @@
 		89C9F76B1CA9352B00703617 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		89C9F76C1CA93AC400703617 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		89C9F76D1CA93AC400703617 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		8B2A7F521CA9765100C0DE25 /* LeftTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableView.h; sourceTree = "<group>"; };
+		8B2A7F531CA9765100C0DE25 /* LeftTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableView.m; sourceTree = "<group>"; };
+		8B2A7F581CA9766E00C0DE25 /* RightCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightCollectionView.h; path = ../RightCollectionView.h; sourceTree = "<group>"; };
+		8B2A7F591CA9766E00C0DE25 /* RightCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightCollectionView.m; path = ../RightCollectionView.m; sourceTree = "<group>"; };
+		8BA281321CA95A71000176DB /* mj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mj.png; sourceTree = "<group>"; };
+		8BA281341CA95A8F000176DB /* coolDog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coolDog.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,8 @@
 				89C9F7691CA926CD00703617 /* Views */,
 				89C9F7371CA9232100703617 /* ViewController.h */,
 				89C9F7381CA9232100703617 /* ViewController.m */,
+				8BA281321CA95A71000176DB /* mj.png */,
+				8BA281341CA95A8F000176DB /* coolDog.jpg */,
 				89C9F73A1CA9232100703617 /* Main.storyboard */,
 				89C9F76A1CA926DB00703617 /* Others */,
 				89C9F7311CA9232100703617 /* Supporting Files */,
@@ -150,6 +162,10 @@
 			children = (
 				89C9F7641CA926C300703617 /* HomeTableViewCell.h */,
 				89C9F7651CA926C300703617 /* HomeTableViewCell.m */,
+				8B2A7F521CA9765100C0DE25 /* LeftTableView.h */,
+				8B2A7F531CA9765100C0DE25 /* LeftTableView.m */,
+				8B2A7F581CA9766E00C0DE25 /* RightCollectionView.h */,
+				8B2A7F591CA9766E00C0DE25 /* RightCollectionView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -279,6 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA281331CA95A71000176DB /* mj.png in Resources */,
+				8BA281351CA95A8F000176DB /* coolDog.jpg in Resources */,
 				89C9F7411CA9232100703617 /* LaunchScreen.storyboard in Resources */,
 				89C9F73E1CA9232100703617 /* Assets.xcassets in Resources */,
 				89C9F73C1CA9232100703617 /* Main.storyboard in Resources */,
@@ -308,6 +326,8 @@
 			files = (
 				89C9F7391CA9232100703617 /* ViewController.m in Sources */,
 				89C9F7361CA9232100703617 /* AppDelegate.m in Sources */,
+				8B2A7F5A1CA9766E00C0DE25 /* RightCollectionView.m in Sources */,
+				8B2A7F541CA9765100C0DE25 /* LeftTableView.m in Sources */,
 				89C9F7671CA926C300703617 /* HomeTableViewCell.m in Sources */,
 				89C9F76E1CA93AC400703617 /* UIView+Frame.m in Sources */,
 				89C9F7331CA9232100703617 /* main.m in Sources */,
@@ -456,7 +476,7 @@
 				INFOPLIST_FILE = HomeTableViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zyht.HomeTableViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lauren.HomeTableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -468,7 +488,7 @@
 				INFOPLIST_FILE = HomeTableViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zyht.HomeTableViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lauren.HomeTableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -538,6 +558,7 @@
 				89C9F75D1CA9232200703617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89C9F75E1CA9232200703617 /* Build configuration list for PBXNativeTarget "HomeTableViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +567,7 @@
 				89C9F7601CA9232200703617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89C9F7611CA9232200703617 /* Build configuration list for PBXNativeTarget "HomeTableViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +576,7 @@
 				89C9F7631CA9232200703617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

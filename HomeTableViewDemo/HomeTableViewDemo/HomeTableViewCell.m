@@ -8,6 +8,8 @@
 
 #import "HomeTableViewCell.h"
 #import "config.h"
+#import "LeftTableView.h"
+#import "RightCollectionView.h"
 
 
 @interface HomeTableViewCell ()
@@ -60,36 +62,57 @@
         
             UIScrollView *scrollView = [UIScrollView new];
             scrollView.backgroundColor = [UIColor cyanColor];
-            scrollView.pagingEnabled = NO;
+            scrollView.pagingEnabled = YES;
+            
+            [self addScrollViewSubViews:scrollView];//添加子控件
             
             [self addSubview:scrollView];
             scrollView;
         
         });
         
-        
+
         
         
         
     }
+    
     return self;
 }
+
+
+- (void)addScrollViewSubViews:(UIScrollView *)scrollView{
+    
+    LeftTableView *leftView = [LeftTableView new];
+    leftView.backgroundColor = [UIColor lightGrayColor];
+    leftView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 500);
+    
+    CGFloat leftTableViewHeight = leftView.tableView.contentSize.height;
+    NSLog(@"leftTableViewHeight: %f",leftTableViewHeight);
+    NSLog(@"leftView.tableView: %f",leftView.tableView.height);
+    
+    RightCollectionView *rightView = [RightCollectionView new];
+    rightView.backgroundColor = [UIColor yellowColor];
+    rightView.frame = CGRectMake(LLkeyWindowsSize.width, 0, LLkeyWindowsSize.width, 500);
+    
+    [scrollView addSubview:leftView];
+    [scrollView addSubview:rightView];
+}
+
+
 
 
 -(void)layoutSubviews{
     [super layoutSubviews];
     NSLog(@"%s",__FUNCTION__);
-
-    
+    NSLog(@"");
     
     _myADView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 100);
     _leftMenuBtn.frame = CGRectMake(0, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
     _rightMenuBtn.frame = CGRectMake(_leftMenuBtn.right, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
-      NSLog(@"%f",_leftMenuBtn.buttom);
-    _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, 500-_leftMenuBtn.buttom);
+    NSLog(@"%f",_leftMenuBtn.buttom);
+    _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, LLkeyWindowsSize.height-_leftMenuBtn.buttom);
     _myScrollView.contentSize = CGSizeMake(LLkeyWindowsSize.width*2, 500);
-//    _myScrollView.contentSize = CGSizeMake(LLkeyWindowsSize.width*2, 500-_leftMenuBtn.buttom);
-    
     
     
 }

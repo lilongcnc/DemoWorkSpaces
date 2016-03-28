@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "HomeTableViewCell.h"
+#import "config.h"
+
 
 @interface ViewController ()<UITabBarDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -51,7 +53,7 @@ static NSString *const cellID = @"HomeTableViewCell";
 
 //如果重写了这个方法之后,那么自定义Cell中的layoutSubViews这个方法会再调用一次
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 500;
+    return 1000;
 }
 
 - (void)didReceiveMemoryWarning {
