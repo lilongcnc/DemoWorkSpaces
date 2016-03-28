@@ -15,6 +15,8 @@
 		89C9F7411CA9232100703617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C9F73F1CA9232100703617 /* LaunchScreen.storyboard */; };
 		89C9F74C1CA9232200703617 /* HomeTableViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F74B1CA9232200703617 /* HomeTableViewDemoTests.m */; };
 		89C9F7571CA9232200703617 /* HomeTableViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7561CA9232200703617 /* HomeTableViewDemoUITests.m */; };
+		89C9F7671CA926C300703617 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7651CA926C300703617 /* HomeTableViewCell.m */; };
+		89C9F76E1CA93AC400703617 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F76D1CA93AC400703617 /* UIView+Frame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		89C9F7521CA9232200703617 /* HomeTableViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTableViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C9F7561CA9232200703617 /* HomeTableViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewDemoUITests.m; sourceTree = "<group>"; };
 		89C9F7581CA9232200703617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89C9F7641CA926C300703617 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		89C9F7651CA926C300703617 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		89C9F76B1CA9352B00703617 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		89C9F76C1CA93AC400703617 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		89C9F76D1CA93AC400703617 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +108,12 @@
 		89C9F7301CA9232100703617 /* HomeTableViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				89C9F7341CA9232100703617 /* AppDelegate.h */,
-				89C9F7351CA9232100703617 /* AppDelegate.m */,
+				89C9F76F1CA93AC800703617 /* Vender */,
+				89C9F7691CA926CD00703617 /* Views */,
 				89C9F7371CA9232100703617 /* ViewController.h */,
 				89C9F7381CA9232100703617 /* ViewController.m */,
 				89C9F73A1CA9232100703617 /* Main.storyboard */,
-				89C9F73D1CA9232100703617 /* Assets.xcassets */,
-				89C9F73F1CA9232100703617 /* LaunchScreen.storyboard */,
-				89C9F7421CA9232100703617 /* Info.plist */,
+				89C9F76A1CA926DB00703617 /* Others */,
 				89C9F7311CA9232100703617 /* Supporting Files */,
 			);
 			path = HomeTableViewDemo;
@@ -138,6 +143,37 @@
 				89C9F7581CA9232200703617 /* Info.plist */,
 			);
 			path = HomeTableViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		89C9F7691CA926CD00703617 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89C9F7641CA926C300703617 /* HomeTableViewCell.h */,
+				89C9F7651CA926C300703617 /* HomeTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		89C9F76A1CA926DB00703617 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				89C9F7341CA9232100703617 /* AppDelegate.h */,
+				89C9F7351CA9232100703617 /* AppDelegate.m */,
+				89C9F73D1CA9232100703617 /* Assets.xcassets */,
+				89C9F73F1CA9232100703617 /* LaunchScreen.storyboard */,
+				89C9F7421CA9232100703617 /* Info.plist */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		89C9F76F1CA93AC800703617 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				89C9F76B1CA9352B00703617 /* config.h */,
+				89C9F76C1CA93AC400703617 /* UIView+Frame.h */,
+				89C9F76D1CA93AC400703617 /* UIView+Frame.m */,
+			);
+			name = Vender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +308,8 @@
 			files = (
 				89C9F7391CA9232100703617 /* ViewController.m in Sources */,
 				89C9F7361CA9232100703617 /* AppDelegate.m in Sources */,
+				89C9F7671CA926C300703617 /* HomeTableViewCell.m in Sources */,
+				89C9F76E1CA93AC400703617 /* UIView+Frame.m in Sources */,
 				89C9F7331CA9232100703617 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HomeTableViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyht.HomeTableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HomeTableViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyht.HomeTableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
