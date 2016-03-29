@@ -16,7 +16,8 @@
 @implementation LeftTableView
 
 static NSString *const CellID = @"CellID";
-static CGFloat const tabelViewCellHeight = 80.f;
+static CGFloat const tabelViewCellHeight = 40.f;
+static int const tableViewRowOfNumber= 3;
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -36,14 +37,15 @@ static CGFloat const tabelViewCellHeight = 80.f;
 
 
 - (void)initSubView{
+    _tableViewHeight = tableViewRowOfNumber*tabelViewCellHeight;
     
     _tableView = ({
         
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, 500) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, _tableViewHeight) style:UITableViewStylePlain];
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.bounces = NO;
-        tableView.backgroundColor = [UIColor orangeColor];
+
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellID];
         [self addSubview:tableView];
         
@@ -64,7 +66,7 @@ static CGFloat const tabelViewCellHeight = 80.f;
     
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"LeftTableView:%zd",indexPath.row];
-    
+    cell.backgroundColor = [UIColor orangeColor];
     return cell;
 }
 

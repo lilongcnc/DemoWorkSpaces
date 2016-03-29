@@ -30,6 +30,7 @@ static NSString *const cellID = @"HomeTableViewCell";
     
     //    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[HomeTableViewCell class] forCellReuseIdentifier:cellID];
+    self.tableView.allowsSelection = NO;
     self.tableView.tableFooterView = [UIView new];
     
 }
@@ -46,14 +47,14 @@ static NSString *const cellID = @"HomeTableViewCell";
     
 
     cell.textLabel.text = @"cell";
-    
+    cell.backgroundColor = [UIColor redColor];
     return cell;
 }
 
 
 //如果重写了这个方法之后,那么自定义Cell中的layoutSubViews这个方法会再调用一次
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 1000;
+    return 1500;
 }
 
 - (void)didReceiveMemoryWarning {

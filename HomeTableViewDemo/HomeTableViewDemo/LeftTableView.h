@@ -11,6 +11,8 @@
 
 
 @interface LeftTableView : UIView
+
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,assign) CGFloat tableViewHeight;
 
 @end
