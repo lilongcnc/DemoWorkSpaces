@@ -12,7 +12,10 @@
 #import "RightCollectionView.h"
 
 
-@interface HomeTableViewCell ()<UIScrollViewDelegate>
+@interface HomeTableViewCell ()<UIScrollViewDelegate>{
+    NSInteger currentPageIndex;
+}
+
 @property (nonatomic,strong) UILabel *myLbale;
 
 @property (nonatomic,strong) UIView *myADView;
@@ -86,11 +89,8 @@
     _leftView = ({
         LeftTableView *leftView = [LeftTableView new];
         leftView.backgroundColor = [UIColor lightGrayColor];
-//        leftView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 300);
         
-        CGFloat leftTableViewHeight = leftView.tableView.contentSize.height;
-        NSLog(@"leftTableViewHeight: %f",leftTableViewHeight);
-        NSLog(@"leftView.tableView: %f",leftView.tableView.height);
+        LxDBAnyVar( leftView.tableView.contentSize.height);
         
         [scrollView addSubview:leftView];
         leftView;
@@ -115,48 +115,40 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     NSLog(@"%s",__FUNCTION__);
-    NSLog(@"");
+    
     
     _myADView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 100);
     _leftMenuBtn.frame = CGRectMake(0, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
     _rightMenuBtn.frame = CGRectMake(_leftMenuBtn.right, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
     
-    //设置scrolView部分
+    //设置scrolView部分的frame
     NSLog(@"%f",_leftMenuBtn.buttom);
     _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, LLkeyWindowsSize.height-_leftMenuBtn.buttom+72);
-//    _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, LLkeyWindowsSize.height-_leftMenuBtn.buttom);
     _myScrollView.contentSize = CGSizeMake(LLkeyWindowsSize.width*2, 500);
     
     _leftView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, _leftView.tableViewHeight);
-     
-    
 }
 
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"scrollView.point: %@",NSStringFromCGPoint(scrollView.contentOffset));
-//    if (scrollView.contentOffset.x / LLkeyWindowsSize.width == 0) {
-//        <#statements#>
-//    }
-    
+//    NSLog(@"scrollView.point: %@",NSStringFromCGPoint(scrollView.contentOffset));
     
     //取得scrollView滚动的位置
     CGFloat offsetX = scrollView.contentOffset.x;
     CGFloat imgWidth = self.myScrollView.frame.size.width;
     //超过视图一半的宽度判断为下一页
     NSInteger index = (offsetX + imgWidth * 0.5) / imgWidth;//宽为375
+    currentPageIndex = index;
+    NSLog(@"scroll to page Index : %zd",currentPageIndex);
     
-    NSLog(@"scroll to page Index : %zd",index);
+    
     
 //    [self.options scrollOptionToIndex:index];
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
+
 
 @end

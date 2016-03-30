@@ -10,6 +10,8 @@
 #define config_h
 
 #import "UIView+Frame.h"
+#import "LxDBAnything.h"
+
 
 #define LLkeyWindowsSize [UIScreen mainScreen].bounds.size
 

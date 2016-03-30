@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89194E231CABAA0F001CC406 /* LxDBAnything.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxDBAnything.h; sourceTree = "<group>"; };
 		89C9F72E1CA9232100703617 /* HomeTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C9F7321CA9232100703617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89C9F7341CA9232100703617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 		89C9F76F1CA93AC800703617 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				89194E231CABAA0F001CC406 /* LxDBAnything.h */,
 				89C9F76B1CA9352B00703617 /* config.h */,
 				89C9F76C1CA93AC400703617 /* UIView+Frame.h */,
 				89C9F76D1CA93AC400703617 /* UIView+Frame.m */,

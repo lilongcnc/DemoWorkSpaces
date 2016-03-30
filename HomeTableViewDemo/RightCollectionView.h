@@ -10,4 +10,6 @@
 
 @interface RightCollectionView : UIView
 
+@property (nonatomic,assign) CGFloat collectionViewHeight;
+
 @end

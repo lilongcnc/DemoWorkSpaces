@@ -16,7 +16,7 @@
 @implementation LeftTableView
 
 static NSString *const CellID = @"CellID";
-static CGFloat const tabelViewCellHeight = 40.f;
+static CGFloat const tableViewCellHeight = 40.f;
 static int const tableViewRowOfNumber= 3;
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -24,7 +24,7 @@ static int const tableViewRowOfNumber= 3;
         
         NSLog(@"%s",__FUNCTION__);
         
-        [self initSubView];
+        [self initSubViews];
         
     }
     return self;
@@ -36,8 +36,8 @@ static int const tableViewRowOfNumber= 3;
 }
 
 
-- (void)initSubView{
-    _tableViewHeight = tableViewRowOfNumber*tabelViewCellHeight;
+- (void)initSubViews{
+    _tableViewHeight = tableViewRowOfNumber*tableViewCellHeight;
     
     _tableView = ({
         
@@ -48,6 +48,8 @@ static int const tableViewRowOfNumber= 3;
 
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellID];
         [self addSubview:tableView];
+        
+//        LxDBAnyVar(tableView);
         
         tableView;
     });
@@ -60,7 +62,7 @@ static int const tableViewRowOfNumber= 3;
 //}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return tableViewRowOfNumber;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -71,7 +73,8 @@ static int const tableViewRowOfNumber= 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return tabelViewCellHeight;
+    
+    return tableViewCellHeight;
 }
 
 
