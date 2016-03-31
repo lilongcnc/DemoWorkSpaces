@@ -11,7 +11,10 @@
 #import "config.h"
 
 
-@interface ViewController ()<UITabBarDelegate,UITableViewDataSource>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,HomeTableViewCellDelegate>{
+    CGFloat tableViewCellgheight;
+    
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -26,12 +29,12 @@ static NSString *const cellID = @"HomeTableViewCell";
     [super viewDidLoad];
     
     
-    
-    
-    //    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[HomeTableViewCell class] forCellReuseIdentifier:cellID];
     self.tableView.allowsSelection = NO;
     self.tableView.tableFooterView = [UIView new];
+    
+    
+    tableViewCellgheight = LLkeyWindowsSize.height;
     
 }
 
@@ -45,17 +48,48 @@ static NSString *const cellID = @"HomeTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HomeTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-
+    cell.delegate = self;
     cell.textLabel.text = @"cell";
-    cell.backgroundColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor cyanColor];
     return cell;
 }
 
 
 //如果重写了这个方法之后,那么自定义Cell中的layoutSubViews这个方法会再调用一次
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 1500;
+    
+    return tableViewCellgheight;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%s",__FUNCTION__);
+    [self.tableView reloadData];
+}
+
+
+
+
+- (CGFloat)getTableViewCellgheight:(CGFloat)height{
+    
+    if (height < LLkeyWindowsSize.height) {
+        return LLkeyWindowsSize.height;
+    }
+    
+    return height;
+}
+
+
+
+
+#pragma mark HomeTableViewCellDelegate
+-(void)homeTableViewCell:(HomeTableViewCell *)cell withScrollViewHeight:(CGFloat)scrollViewHeight{
+    tableViewCellgheight = [self getTableViewCellgheight:scrollViewHeight];
+    LxDBAnyVar(@"----------------------------");
+    LxDBAnyVar(tableViewCellgheight);
+//    [self.tableView reloadData];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,6 +10,7 @@
 
 @interface RightCollectionView : UIView
 
+//内部把这个高度一定计算好
 @property (nonatomic,assign) CGFloat collectionViewHeight;
 
 @end

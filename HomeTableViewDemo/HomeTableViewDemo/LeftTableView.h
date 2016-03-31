@@ -13,6 +13,8 @@
 @interface LeftTableView : UIView
 
 @property (nonatomic,strong) UITableView *tableView;
+
+//内部把这个高度一定计算好
 @property (nonatomic,assign) CGFloat tableViewHeight;
 
 @end

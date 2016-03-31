@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HomeTableViewCell;
+
+@protocol HomeTableViewCellDelegate <NSObject>
+
+- (void)homeTableViewCell:(HomeTableViewCell *)cell withScrollViewHeight:(CGFloat)scrollViewHeight;
+
+@end
 
 @interface HomeTableViewCell : UITableViewCell
+
+@property (nonatomic,assign) id<HomeTableViewCellDelegate> delegate;
+
+//@property (nonatomic,copy) void(^cellGetCellHeightBlock)(CGFloat scrollViewHeight);
 
 @end

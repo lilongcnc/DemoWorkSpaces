@@ -22,7 +22,7 @@ static int const tableViewRowOfNumber= 3;
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         
-        NSLog(@"%s",__FUNCTION__);
+//        NSLog(@"%s",__FUNCTION__);
         
         [self initSubViews];
         
@@ -32,7 +32,7 @@ static int const tableViewRowOfNumber= 3;
 
 
 -(void)awakeFromNib{
-    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%s",__FUNCTION__);
 }
 
 
@@ -76,8 +76,6 @@ static int const tableViewRowOfNumber= 3;
     
     return tableViewCellHeight;
 }
-
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"LeftTableView 点击了 %zd",indexPath.row);

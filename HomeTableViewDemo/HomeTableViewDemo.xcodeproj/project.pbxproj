@@ -96,6 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		892D69F51CACBAFE00D05D7C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		89C9F7251CA9232100703617 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +168,7 @@
 		89C9F7691CA926CD00703617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				892D69F51CACBAFE00D05D7C /* Cell */,
 				89C9F7641CA926C300703617 /* HomeTableViewCell.h */,
 				89C9F7651CA926C300703617 /* HomeTableViewCell.m */,
 				8B2A7F521CA9765100C0DE25 /* LeftTableView.h */,

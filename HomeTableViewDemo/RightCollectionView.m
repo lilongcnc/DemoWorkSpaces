@@ -10,24 +10,32 @@
 #import "config.h"
 
 
-@interface RightCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface RightCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>{
+    CGFloat LLVerticalCellWidth;
+}
 
 @property (nonatomic,strong) UICollectionView *collectionView;
 @end
 
 @implementation RightCollectionView
 
-#define LLVerticalCellWidth [UIScreen mainScreen].bounds.size.width*0.5-5
 static CGFloat const headerViewHeight = 33.f;
 static CGFloat const itemSizeH = 179.f;
+static CGFloat const itemMarginHorizontal = 2.f;
+static CGFloat const itemMarginVertical = 2.f;
+static CGFloat const sectionInsetTop = 5.f;
+
+
+
 
 static NSInteger const sectionNum = 3;
-static NSInteger const rowNumOfSectionNum = 5;
+static NSInteger const rowNumOfSectionNum = 3;
 static NSString *const cellID = @"UICollectionViewCell";
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         
+        [self initvalues];
         [self initSubViews];
     }
     
@@ -36,17 +44,30 @@ static NSString *const cellID = @"UICollectionViewCell";
 }
 
 
+-(void)initvalues{
+    
+    LLVerticalCellWidth = ([UIScreen mainScreen].bounds.size.width-itemMarginVertical)*0.5;
+    
+    int eachRowNum = 2;
+    
+    //TODO 这里实际是应该用for计算每个sectin下的rowNum,每个section下的row是不固定的,而且sectionHeader有的话,高度也需要考虑进去
+    int numRowOnfOneSection = (rowNumOfSectionNum+1)/eachRowNum;
+    _collectionViewHeight = sectionInsetTop*sectionNum + numRowOnfOneSection*itemSizeH*sectionNum + (numRowOnfOneSection-1)*itemMarginHorizontal*sectionNum;
+    
+    
+//    LxDBAnyVar(_collectionViewHeight);
+}
+
 - (void)initSubViews{
     
     
-    _collectionViewHeight = rowNumOfSectionNum*itemSizeH;
     
     
     _collectionView = ({
         //UICollectionViewLayout
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        flowLayout.itemSize = CGSizeMake(LLVerticalCellWidth,itemSizeH); //不加这个报自动布局的错误~~~~~!!!
+        flowLayout.itemSize = CGSizeMake(159,179); //不加这个报自动布局的错误~~~~~!!!
         
 
         
@@ -65,10 +86,11 @@ static NSString *const cellID = @"UICollectionViewCell";
         
         
         // 每一行中每个cell之间的间距
-//        flowLayout.minimumInteritemSpacing = 3; //这里直接用xMargin不行???
-        // 每一行之间的间距
-        flowLayout.minimumLineSpacing = 3;
-        
+        flowLayout.minimumInteritemSpacing = itemMarginVertical; //这里直接用xMargin不行???
+//        // 每一行之间的间距
+        flowLayout.minimumLineSpacing = itemMarginHorizontal;
+        //设置section之间的间距
+        flowLayout.sectionInset = UIEdgeInsetsMake(sectionInsetTop, 0, 0, 0);
         
         [self addSubview:collectionView];
         collectionView;
@@ -77,8 +99,7 @@ static NSString *const cellID = @"UICollectionViewCell";
     
 }
 
-
-//UICollectionViewDelegate & UICollectionDataSource
+#pragma mark -- UICollectionViewDelegate & UICollectionDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return sectionNum;
 }
@@ -96,12 +117,14 @@ static NSString *const cellID = @"UICollectionViewCell";
     
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"collectionView点击了 %zd",indexPath.row);
+}
+
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-    
-    
-    
-    
 }
 
 @end
