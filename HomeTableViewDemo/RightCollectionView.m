@@ -67,7 +67,7 @@ static NSString *const cellID = @"UICollectionViewCell";
         //UICollectionViewLayout
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        flowLayout.itemSize = CGSizeMake(159,179); //不加这个报自动布局的错误~~~~~!!!
+        flowLayout.itemSize = CGSizeMake(LLVerticalCellWidth,itemSizeH); //不加这个报自动布局的错误~~~~~!!!
         
 
         
