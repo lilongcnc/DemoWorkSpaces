@@ -19,6 +19,5 @@
 
 @property (nonatomic,assign) id<HomeTableViewCellDelegate> delegate;
 
-//@property (nonatomic,copy) void(^cellGetCellHeightBlock)(CGFloat scrollViewHeight);
 
 @end

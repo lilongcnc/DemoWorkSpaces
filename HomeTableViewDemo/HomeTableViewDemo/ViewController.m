@@ -58,35 +58,21 @@ static NSString *const cellID = @"HomeTableViewCell";
 //如果重写了这个方法之后,那么自定义Cell中的layoutSubViews这个方法会再调用一次
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    LxDBAnyVar(tableViewCellgheight);
     return tableViewCellgheight;
+//    return 2000;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%s",__FUNCTION__);
     [self.tableView reloadData];
 }
 
 
-
-
-- (CGFloat)getTableViewCellgheight:(CGFloat)height{
-    
-    if (height < LLkeyWindowsSize.height) {
-        return LLkeyWindowsSize.height;
-    }
-    
-    return height;
-}
-
-
-
-
 #pragma mark HomeTableViewCellDelegate
 -(void)homeTableViewCell:(HomeTableViewCell *)cell withScrollViewHeight:(CGFloat)scrollViewHeight{
-    tableViewCellgheight = [self getTableViewCellgheight:scrollViewHeight];
-    LxDBAnyVar(@"----------------------------");
+    tableViewCellgheight = scrollViewHeight;
     LxDBAnyVar(tableViewCellgheight);
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 

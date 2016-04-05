@@ -14,6 +14,7 @@
 
 @interface HomeTableViewCell ()<UIScrollViewDelegate>{
     NSInteger currentPageIndex;
+    BOOL modifyFlag;
 }
 
 @property (nonatomic,strong) UILabel *myLbale;
@@ -129,7 +130,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%s",__FUNCTION__);
     
     
     _myADView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 100);
@@ -137,7 +138,12 @@
     _rightMenuBtn.frame = CGRectMake(_leftMenuBtn.right, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
     
     //设置scrolView部分的frame
-    [self modifyScrollViewframe];
+    //保证只执行一次
+    NSLog(@"%s",__FUNCTION__);
+    if (!modifyFlag) {
+        modifyFlag = YES;
+        [self modifyScrollViewframe];
+    }
 }
 
 
@@ -150,11 +156,14 @@
     CGFloat imgWidth = self.myScrollView.frame.size.width;
     //超过视图一半的宽度判断为下一页
     NSInteger index = (offsetX + imgWidth * 0.5) / imgWidth;//宽为375
-    currentPageIndex = index;
     NSLog(@"scroll to page Index : %zd",currentPageIndex);
     
     
-//    [self modifyScrollViewframe];
+    if (currentPageIndex != index) {
+            NSLog(@"%s",__FUNCTION__);
+        currentPageIndex = index;
+        [self modifyScrollViewframe];
+    }
     
     
 //    [self.options scrollOptionToIndex:index];
@@ -162,7 +171,7 @@
 }
 
 - (void)modifyScrollViewframe{
-    
+    LxDBAnyVar(@"--------------------------------------------------------");
     LxDBAnyVar(currentPageIndex);
     
     CGFloat viewHeight = 0.0;
@@ -192,23 +201,20 @@
 
     
     LxDBAnyVar(viewHeight);
-    LxDBAnyVar(_leftView.tableViewHeight);
-    LxDBAnyVar(_rightView.collectionViewHeight);
+    
+//    LxDBAnyVar(_leftView.tableViewHeight);
+//    LxDBAnyVar(_rightView.collectionViewHeight);
+    viewHeight = viewHeight< LLkeyWindowsSize.height?LLkeyWindowsSize.height:viewHeight;
+    
     _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, viewHeight);
     _myScrollView.contentSize = CGSizeMake(LLkeyWindowsSize.width*2, viewHeight);
     
     _leftView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, _leftView.tableViewHeight);
     _rightView.frame = CGRectMake(LLkeyWindowsSize.width, 0, LLkeyWindowsSize.width, _rightView.collectionViewHeight);
 
-//    
-//    if (viewHeight< LLkeyWindowsSize.height) {
-//        viewHeight = LLkeyWindowsSize.height;
-//    }
-    
     //通知更新控制器cell高度
-    
     if ([self.delegate respondsToSelector:@selector(homeTableViewCell:withScrollViewHeight:)]) {
-        [self.delegate homeTableViewCell:self withScrollViewHeight:viewHeight< LLkeyWindowsSize.height?LLkeyWindowsSize.height:viewHeight];
+        [self.delegate homeTableViewCell:self withScrollViewHeight:viewHeight];
     }
     
 }
