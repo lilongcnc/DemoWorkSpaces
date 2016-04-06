@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class UITableViewCell;
+@class UICollectionViewCell;
 @class HomeTableViewCell;
 
 @protocol HomeTableViewCellDelegate <NSObject>
 
 - (void)homeTableViewCell:(HomeTableViewCell *)cell withScrollViewHeight:(CGFloat)scrollViewHeight;
+
+
+- (void)homeTableViewCell:(UITableViewCell *)cell subViewCellOnClickedIndex:(NSIndexPath *)indexPath;
+
+- (void)homeCollectionViewCell:(UICollectionViewCell *)cell subViewCellOnClickedIndex:(NSIndexPath *)indexPath;
+
+
 
 @end
 
@@ -19,5 +28,6 @@
 
 @property (nonatomic,assign) id<HomeTableViewCellDelegate> delegate;
 
+@property (nonatomic,assign) CGFloat leftTableViewCellHeight;
 
 @end

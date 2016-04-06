@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-
 @interface LeftTableView : UIView
 
 @property (nonatomic,strong) UITableView *tableView;
 
 //内部把这个高度一定计算好
 @property (nonatomic,assign) CGFloat tableViewHeight;
+
+@property (nonatomic,copy) void(^leftTableViewCellOnClick)(UITableViewCell *cell,NSIndexPath *indexPath);
 
 @end

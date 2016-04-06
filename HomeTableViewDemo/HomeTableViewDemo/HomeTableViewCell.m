@@ -29,6 +29,7 @@
 @property (nonatomic,strong) NSMutableArray *myScrollSubViews;
 
 
+
 @end
 
 
@@ -108,6 +109,14 @@
         leftView;
     });
     
+    @LLWeakObj(self);
+    [_leftView setLeftTableViewCellOnClick:^(UITableViewCell *cell, NSIndexPath *indexPath) {
+        @LLStrongObj(self);
+        if ([self.delegate respondsToSelector:@selector(homeTableViewCell:subViewCellOnClickedIndex:)]) {
+            [self.delegate homeTableViewCell:cell subViewCellOnClickedIndex:indexPath];
+        }
+    }];
+    
     
     
     _rightView = ({
@@ -117,6 +126,14 @@
         [scrollView addSubview:rightView];
         rightView;
     });
+    
+    
+    [_rightView setRightCollectionViewCellOnClick:^(UICollectionViewCell *cell, NSIndexPath *indexPath) {
+        @LLStrongObj(self);
+        if ([self.delegate respondsToSelector:@selector(homeCollectionViewCell:subViewCellOnClickedIndex:)]) {
+            [self.delegate homeCollectionViewCell:cell subViewCellOnClickedIndex:indexPath];
+        }
+    }];
     
     
     [self.myScrollSubViews addObject:_leftView];
@@ -136,6 +153,7 @@
     _myADView.frame = CGRectMake(0, 0, LLkeyWindowsSize.width, 100);
     _leftMenuBtn.frame = CGRectMake(0, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
     _rightMenuBtn.frame = CGRectMake(_leftMenuBtn.right, _myADView.buttom, LLkeyWindowsSize.width*0.5, 40);
+    LxDBAnyVar(_leftMenuBtn.frame);
     
     //设置scrolView部分的frame
     //保证只执行一次
@@ -150,25 +168,23 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    NSLog(@"scrollView.point: %@",NSStringFromCGPoint(scrollView.contentOffset));
-    
     //取得scrollView滚动的位置
     CGFloat offsetX = scrollView.contentOffset.x;
     CGFloat imgWidth = self.myScrollView.frame.size.width;
     //超过视图一半的宽度判断为下一页
     NSInteger index = (offsetX + imgWidth * 0.5) / imgWidth;//宽为375
-    NSLog(@"scroll to page Index : %zd",currentPageIndex);
+//    NSLog(@"scroll to page Index : %zd",currentPageIndex);
     
     
     if (currentPageIndex != index) {
-            NSLog(@"%s",__FUNCTION__);
+//            NSLog(@"%s",__FUNCTION__);
         currentPageIndex = index;
         [self modifyScrollViewframe];
     }
     
-    
 //    [self.options scrollOptionToIndex:index];
-    
 }
+
 
 - (void)modifyScrollViewframe{
     LxDBAnyVar(@"--------------------------------------------------------");
@@ -201,10 +217,9 @@
 
     
     LxDBAnyVar(viewHeight);
-    
-//    LxDBAnyVar(_leftView.tableViewHeight);
-//    LxDBAnyVar(_rightView.collectionViewHeight);
+    viewHeight += CGRectGetMaxY(_leftMenuBtn.frame);
     viewHeight = viewHeight< LLkeyWindowsSize.height?LLkeyWindowsSize.height:viewHeight;
+    _leftTableViewCellHeight = viewHeight;
     
     _myScrollView.frame = CGRectMake(0, _leftMenuBtn.buttom, LLkeyWindowsSize.width, viewHeight);
     _myScrollView.contentSize = CGSizeMake(LLkeyWindowsSize.width*2, viewHeight);
@@ -214,7 +229,7 @@
 
     //通知更新控制器cell高度
     if ([self.delegate respondsToSelector:@selector(homeTableViewCell:withScrollViewHeight:)]) {
-        [self.delegate homeTableViewCell:self withScrollViewHeight:viewHeight];
+        [self.delegate homeTableViewCell:self withScrollViewHeight:viewHeight]; //这里需要加上cell中其他部分的高度
     }
     
 }

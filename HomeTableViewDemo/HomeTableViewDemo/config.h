@@ -16,4 +16,10 @@
 #define LLkeyWindowsSize [UIScreen mainScreen].bounds.size
 
 
+
+//避免宏循环引用
+#define LLWeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define LLStrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+
+
 #endif /* config_h */

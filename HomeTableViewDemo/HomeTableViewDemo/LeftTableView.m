@@ -17,7 +17,10 @@
 
 static NSString *const CellID = @"CellID";
 static CGFloat const tableViewCellHeight = 40.f;
-static int const tableViewRowOfNumber= 3;
+static CGFloat const tableHeaderViewHeight = 20.f;
+static CGFloat const tableFooterViewHeight = 20.f;
+static int const tableViewRowOfNumber= 6;
+static int const tableViewSectionOfNumber= 3;
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -37,11 +40,13 @@ static int const tableViewRowOfNumber= 3;
 
 
 - (void)initSubViews{
-    _tableViewHeight = tableViewRowOfNumber*tableViewCellHeight;
+    //TODO 这里实际是应该用for计算每个sectin下的rowNum,每个section下的row是不固定的,而且sectionHeader有的话,高度也需要考虑进去
+    _tableViewHeight = (tableHeaderViewHeight+tableFooterViewHeight)*tableViewSectionOfNumber + tableViewSectionOfNumber*tableViewRowOfNumber*tableViewCellHeight;
+    
     
     _tableView = ({
         
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, _tableViewHeight) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, _tableViewHeight) style:UITableViewStyleGrouped];//UITableViewStylePlain
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.bounces = NO;
@@ -57,9 +62,9 @@ static int const tableViewRowOfNumber= 3;
 
 
 #pragma mark UItableViewDelegate && UITableViewDataSource
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 3;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return tableViewSectionOfNumber;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return tableViewRowOfNumber;
@@ -77,9 +82,44 @@ static int const tableViewRowOfNumber= 3;
     return tableViewCellHeight;
 }
 
+
+#pragma mark 添加headerView和footerView
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return tableHeaderViewHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return tableFooterViewHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, tableHeaderViewHeight)];
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:headerView.bounds];
+    tipLabel.text = [NSString stringWithFormat:@"第%zd个secion的顶部",section];
+    tipLabel.textColor = [UIColor redColor];
+    tipLabel.backgroundColor = [UIColor purpleColor];
+    [headerView addSubview:tipLabel];
+    return headerView;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, LLkeyWindowsSize.width, tableFooterViewHeight)];
+    UILabel *tipLabel = [[UILabel alloc] initWithFrame:footerView.bounds];
+    tipLabel.text = [NSString stringWithFormat:@"第%zd个secion的底部",section];
+    tipLabel.backgroundColor = [UIColor brownColor];
+    [footerView addSubview:tipLabel];
+    return footerView;
+}
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"LeftTableView 点击了 %zd",indexPath.row);
+    NSLog(@"LeftTableView 点击了 %zd-------%zd",indexPath.section,indexPath.row);
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (!_leftTableViewCellOnClick)  return;
+    _leftTableViewCellOnClick(cell,indexPath);
 }
 
 
 @end
+

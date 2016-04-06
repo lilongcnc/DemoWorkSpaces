@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89470B3D1CB4B212005563BC /* MyHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89470B3B1CB4B212005563BC /* MyHeadView.m */; };
+		89470B3E1CB4B212005563BC /* MyHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89470B3C1CB4B212005563BC /* MyHeadView.xib */; };
 		89C9F7331CA9232100703617 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7321CA9232100703617 /* main.m */; };
 		89C9F7361CA9232100703617 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7351CA9232100703617 /* AppDelegate.m */; };
 		89C9F7391CA9232100703617 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9F7381CA9232100703617 /* ViewController.m */; };
@@ -42,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		89194E231CABAA0F001CC406 /* LxDBAnything.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxDBAnything.h; sourceTree = "<group>"; };
+		89470B3A1CB4B212005563BC /* MyHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeadView.h; sourceTree = "<group>"; };
+		89470B3B1CB4B212005563BC /* MyHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHeadView.m; sourceTree = "<group>"; };
+		89470B3C1CB4B212005563BC /* MyHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyHeadView.xib; sourceTree = "<group>"; };
 		89C9F72E1CA9232100703617 /* HomeTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C9F7321CA9232100703617 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89C9F7341CA9232100703617 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -99,6 +104,12 @@
 		892D69F51CACBAFE00D05D7C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				89C9F7641CA926C300703617 /* HomeTableViewCell.h */,
+				89C9F7651CA926C300703617 /* HomeTableViewCell.m */,
+				8B2A7F521CA9765100C0DE25 /* LeftTableView.h */,
+				8B2A7F531CA9765100C0DE25 /* LeftTableView.m */,
+				8B2A7F581CA9766E00C0DE25 /* RightCollectionView.h */,
+				8B2A7F591CA9766E00C0DE25 /* RightCollectionView.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -168,13 +179,10 @@
 		89C9F7691CA926CD00703617 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89470B3A1CB4B212005563BC /* MyHeadView.h */,
+				89470B3B1CB4B212005563BC /* MyHeadView.m */,
+				89470B3C1CB4B212005563BC /* MyHeadView.xib */,
 				892D69F51CACBAFE00D05D7C /* Cell */,
-				89C9F7641CA926C300703617 /* HomeTableViewCell.h */,
-				89C9F7651CA926C300703617 /* HomeTableViewCell.m */,
-				8B2A7F521CA9765100C0DE25 /* LeftTableView.h */,
-				8B2A7F531CA9765100C0DE25 /* LeftTableView.m */,
-				8B2A7F581CA9766E00C0DE25 /* RightCollectionView.h */,
-				8B2A7F591CA9766E00C0DE25 /* RightCollectionView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89470B3E1CB4B212005563BC /* MyHeadView.xib in Resources */,
 				8BA281331CA95A71000176DB /* mj.png in Resources */,
 				8BA281351CA95A8F000176DB /* coolDog.jpg in Resources */,
 				89C9F7411CA9232100703617 /* LaunchScreen.storyboard in Resources */,
@@ -336,6 +345,7 @@
 			files = (
 				89C9F7391CA9232100703617 /* ViewController.m in Sources */,
 				89C9F7361CA9232100703617 /* AppDelegate.m in Sources */,
+				89470B3D1CB4B212005563BC /* MyHeadView.m in Sources */,
 				8B2A7F5A1CA9766E00C0DE25 /* RightCollectionView.m in Sources */,
 				8B2A7F541CA9765100C0DE25 /* LeftTableView.m in Sources */,
 				89C9F7671CA926C300703617 /* HomeTableViewCell.m in Sources */,

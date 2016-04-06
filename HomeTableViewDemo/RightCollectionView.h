@@ -13,4 +13,7 @@
 //内部把这个高度一定计算好
 @property (nonatomic,assign) CGFloat collectionViewHeight;
 
+
+@property (nonatomic,copy) void(^rightCollectionViewCellOnClick)(UICollectionViewCell *cell,NSIndexPath *indexPath);
+
 @end
