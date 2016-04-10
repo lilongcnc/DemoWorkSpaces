@@ -17,26 +17,5 @@
 @dynamic bookName;
 @dynamic student;
 
-- (void) encodeWithCoder: (NSCoder *)coder
-{
-    [coder encodeObject:self.bookID forKey:@"bookID"];
-    [coder encodeObject:self.bookName forKey:@"bookName"];
-    [coder encodeObject:self.student forKey:@"student"];
-}
-
-
-- (id)initWithCoder:(NSCoder *)aDecoder{
-    
-    if (self = [super init]) {
-        
-        self.bookID = [aDecoder decodeObjectForKey:@"bookID"];
-        
-        self.bookName = [aDecoder decodeObjectForKey:@"bookName"];
-        self.student = [aDecoder decodeObjectForKey:@"student"];
-    }
-    
-    return self;
-}
-
 
 @end

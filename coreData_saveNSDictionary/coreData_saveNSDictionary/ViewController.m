@@ -131,8 +131,7 @@
     
     
     //====== 1'
-    //    创建模型数据模型
-    //第一组数据
+    //    创建模型数据模型 ,这样存是不行的
     //    Student *student = [NSEntityDescription insertNewObjectForEntityForName:@"Student" inManagedObjectContext:self.managedContext];
     //    student.name = @"张三2";
     //    student.id = @(11);
@@ -173,15 +172,8 @@
         [NSException raise:@"访问数据库错误" format:@"%@",[error localizedDescription]];
     }
     
-    
-    //    NSArray *arr1 = [[NSArray alloc]initWithObjects:@"0",@"5",nil];
-    //
-    //    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr1];
-    //
-    //    NSArray *arr2 = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    
 }
+
 
 //更新数据
 - (IBAction)modifyData{
@@ -245,24 +237,14 @@
         NSLog(@"-----------------------------------");
         // 遍历数据
         int index = 0;
-        //        for (NSManagedObject *obj in objs) {
         for (Student *stu in objs) {
             NSLog(@"student:%d---name=%@", index++,stu.name);
-            
-            
             NSDictionary *dict = stu.penDict;
             NSLog(@"dict : %@",dict);
-            
             Book *book2 = dict[@"book2"];
             Book *book22 = dict[@"book22"];
             NSLog(@"-book2'name:%@----book22'name%@",book2.bookName,book22.bookName);
             
-            //获取书的数组
-            //            NSArray *bookArr = [NSKeyedUnarchiver unarchiveObjectWithData:stu.booksArray];
-            //            NSLog(@"%@",bookArr);
-            //            for (BookInfo *book in bookArr) {
-            //                NSLog(@"bookInfo:%zd-----%@-----%@",book.bookID,book.bookName,book.student);
-            //            }
         }
     });
 }
