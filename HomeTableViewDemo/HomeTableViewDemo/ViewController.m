@@ -47,6 +47,7 @@ static NSString *const cellID = @"HomeTableViewCell";
     NSLog(@"%s",__FUNCTION__);
    
     cell.delegate = self;
+    tableViewCellgheight = cell.leftTableViewCellHeight; //设置的cell高度
     cell.textLabel.text = @"cell";
     cell.backgroundColor = [UIColor cyanColor];
     return cell;
