@@ -15,20 +15,10 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-    
-//    [self demo1];
-//    [self demo2];
-    [self demo3];
-    
-    
-}
 
 
 - (void)demo1{
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 300, 150)];
     [label setBackgroundColor:[UIColor orangeColor]];
     [label setTextColor:[UIColor redColor]];
@@ -87,7 +77,6 @@
     paragraphStyle.lineHeightMultiple = 15;/* Natural line height is multiplied by this factor (if positive) before being constrained by minimum and maximum line height. */
     paragraphStyle.hyphenationFactor = 1;//连字属性 在iOS，唯一支持的值分别为0和1
     
-    
 }
 
 
@@ -102,7 +91,7 @@
      1.控件 UIView UILabel UITextField UITextView UIButton
      2.字体、大小、单位、颜色
      */
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 300, 260)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 120)];
     label.text = @"Label Text Content, This is a text label things attribute";//默认为空
     label.font = [UIFont systemFontOfSize:17];//默认使用系统的17
     label.textColor = [UIColor orangeColor];//默认使用文本黑色
@@ -110,6 +99,7 @@
     label.shadowOffset = CGSizeMake(1,0);//默认是一个向上的阴影(0,-1)
     label.textAlignment = NSTextAlignmentCenter;//默认是左对齐
     label.lineBreakMode = NSLineBreakByTruncatingTail;//段落样式，默认是最后截断尾巴，用...代替
+    label.backgroundColor = [UIColor greenColor];
     
     //富文本的基本数据类型，属性字符串。以此为基础，如果这个设置了相应的属性，则会忽略上面设置的属性，默认为空
     NSString *string = label.text;
@@ -301,6 +291,7 @@
      NSFontAttributeName 字体 默认是Helvetica 12号
      NSParagraphStyleAttributeName 段落样式
      */
+    
     /*
      UIKIT_EXTERN NSString *const  NS_AVAILABLE_IOS(6_0);      // NSParagraphStyle, default defaultParagraphStyle
      UIKIT_EXTERN NSString *const NSForegroundColorAttributeName NS_AVAILABLE_IOS(6_0);     // UIColor, default blackColor
@@ -362,7 +353,137 @@ UIFont * GetVariationOfFontWithTrait(UIFont *baseFont,
 
 
 
+- (void)demo4{
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 300, 80)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统的17
+    label.backgroundColor = [UIColor lightGrayColor];
 
+    
+    NSDictionary*attributes =@{NSForegroundColorAttributeName: [UIColor redColor],
+                               NSFontAttributeName: [UIFont fontWithName:@"Zapfino"size:16.0]
+                               };
+    NSString *strDisplayText =@"This is an attributed string.";
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:strDisplayText attributes:attributes];
+    label.attributedText= attributedText;
+    
+    [self.view addSubview:label];
+}
+
+
+- (void)demo5{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, 300, 100)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    
+    NSDictionary *attributes1 =@{
+                                NSBackgroundColorAttributeName: [UIColor orangeColor],
+                                NSFontAttributeName: [UIFont fontWithName:@"Zapfino"size:22.0],
+                                NSKernAttributeName: @-1.0
+                                };
+    NSString *strDisplayText1 =@"Orange Background";
+    NSAttributedString *attributedText1 = [[NSAttributedString alloc]initWithString:strDisplayText1 attributes:attributes1];
+    label.attributedText= attributedText1;
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)demo6{
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 290, 300, 40)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    label.backgroundColor = [UIColor cyanColor];
+    
+    NSShadow*shadow = [[NSShadow alloc] init];
+    shadow.shadowColor= [UIColor greenColor];
+    shadow.shadowBlurRadius=5.0;
+    shadow.shadowOffset=CGSizeMake(1.0,1.0);
+    
+    
+    NSDictionary *attributes2 =@{
+                                NSUnderlineStyleAttributeName:@1,
+                                NSShadowAttributeName: shadow
+                                };
+    NSString *strDisplayText2 =@"Shadow Font";
+    NSAttributedString *attributedText2 = [[NSAttributedString alloc] initWithString:strDisplayText2 attributes:attributes2];
+    label.attributedText= attributedText2;
+    
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)demo7{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 300, 80)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    label.backgroundColor = [UIColor lightGrayColor];
+    
+    NSDictionary*subStrAttribute1 =@{
+                                     NSForegroundColorAttributeName: [UIColor redColor],
+                                     NSStrikethroughStyleAttributeName:@2
+                                     };
+    NSDictionary*subStrAttribute2 =@{
+                                     NSForegroundColorAttributeName: [UIColor greenColor]
+                                     };
+    NSString *strDisplayText3 =@"Red and Green";
+    NSMutableAttributedString*attributedText3 = [[NSMutableAttributedString alloc]initWithString:strDisplayText3];
+    [attributedText3 setAttributes:subStrAttribute1 range:NSMakeRange(0,3)];
+    [attributedText3 setAttributes:subStrAttribute2 range:NSMakeRange(8,5)];
+    label.attributedText= attributedText3;
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)demo8{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 390, 300, 120)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    
+    
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)demo9{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 390, 300, 120)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    
+    
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)demo10{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 390, 300, 120)];
+    label.font = [UIFont systemFontOfSize:17];//默认使用系统
+    
+    
+    
+    [self.view addSubview:label];
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //    [self demo1];
+    //    [self demo2];
+    [self demo3];
+    [self demo4];
+    [self demo5];
+    [self demo6];
+    [self demo7];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
